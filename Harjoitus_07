@@ -1,0 +1,59 @@
+/*	Jani Kähkönen/H9575
+Harjoitus_7	19.9.2014	*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Tiedot
+{
+	string _nimi, _osoite;
+	double _paino, _pituus;
+	double _ihanne, _erotus;
+public:
+	void setNimi(string nimi){_nimi = nimi;}
+	const string getNimi(){ return _nimi; }
+
+	void setOsoite(string osoite){ _osoite = osoite; }
+	const string getOsoite(){ return _osoite; }
+
+	void setPaino(double paino){ _paino = paino; }
+	const double getPaino(){ return _paino; }
+
+	void setPituus(double pituus){ _pituus = pituus; }
+	const double getPituus(){ return _pituus; }
+
+	void Ihanne(){ _ihanne = _pituus - 100; }
+	const double getIhanne(){ return _ihanne; }
+	void Erotus(){ _erotus = _paino - _ihanne; }
+	const double getErotus(){ return abs(_erotus); }
+
+	Tiedot() :_nimi(""), _osoite(""), _paino(0), _pituus(0), _ihanne(0), _erotus(0){}
+	~Tiedot(){}
+};
+
+int main()
+{
+	Tiedot tiedot;
+
+	string nimi, osoite;
+	double paino, pituus;
+
+	cout << "Syota nimi: "; cin >> nimi;
+	tiedot.setNimi(nimi);
+	cout << "Syota osoite: "; cin >> osoite;
+	tiedot.setOsoite(osoite);
+	cout << "Syota paino: "; cin >> paino;
+	tiedot.setPaino(paino);
+	cout << "Syota pituus: "; cin >> pituus;
+	tiedot.setPituus(pituus);
+
+	tiedot.Ihanne();
+	tiedot.Erotus();
+
+	cout	<< "\nArvoisa, " << tiedot.getNimi() << "\n"
+			<< "Osoitteesi on " << tiedot.getOsoite() << "\n"
+			<< "Nykyinen painosi: " << tiedot.getPaino() << " Kg\n"
+			<< "Ihanne painosi: " << tiedot.getIhanne() << "Kg\n"
+			<< "Erotus: " << tiedot.getErotus() << "Kg\n";
+}
